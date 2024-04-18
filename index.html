@@ -7,7 +7,6 @@
         }
     </style>
 <head>
-    <title>Randomly Positioned Images</title>
     <style>
         body {
             position: relative;
@@ -16,6 +15,7 @@
             margin: 0;
             padding: 0;
             overflow: hidden; /* Prevents scrolling */
+            background-color: #f0f0f0; /* Background color for the body */
         }
         .container {
             position: absolute;
@@ -24,8 +24,14 @@
             width: 100%;
             height: 100%;
         }
-        img {
+        .moving-image {
             position: absolute;
+            animation: moveImage 10s linear infinite; /* Adjust animation duration and timing */
+        }
+        @keyframes moveImage {
+            0% { left: 0; top: 50%; }
+            50% { left: 100%; top: 0; }
+            100% { left: 0; top: 50%; }
         }
     </style>
 </head>
@@ -38,48 +44,4 @@
         <img src="cuteOtter.jpg" alt="Image 5">
         <!-- Add more img tags for additional images -->
     </div>
-
-    <script>
-        function getRandomPosition(width, height) {
-            var bodyWidth = document.body.clientWidth - width; // Adjusted for image width
-            var bodyHeight = document.body.clientHeight - height; // Adjusted for image height
-            var randomX = Math.floor(Math.random() * bodyWidth);
-            var randomY = Math.floor(Math.random() * bodyHeight);
-            return { x: randomX, y: randomY };
-        }
-
-        function checkCollisions(img, images) {
-            var imgRect = img.getBoundingClientRect();
-            for (var i = 0; i < images.length; i++) {
-                if (images[i] !== img) {
-                    var otherRect = images[i].getBoundingClientRect();
-                    if (
-                        imgRect.right > otherRect.left &&
-                        imgRect.left < otherRect.right &&
-                        imgRect.bottom > otherRect.top &&
-                        imgRect.top < otherRect.bottom
-                    ) {
-                        return true; // Collision detected
-                    }
-                }
-            }
-            return false; // No collision
-        }
-
-        window.onload = function() {
-            var images = document.querySelectorAll('img');
-            images.forEach(function(img) {
-                var randomPosition = getRandomPosition(img.width, img.height);
-                img.style.left = randomPosition.x + 'px';
-                img.style.top = randomPosition.y + 'px';
-                
-                // Check for collisions and adjust position if needed
-                while (checkCollisions(img, images)) {
-                    randomPosition = getRandomPosition(img.width, img.height);
-                    img.style.left = randomPosition.x + 'px';
-                    img.style.top = randomPosition.y + 'px';
-                }
-            });
-        };
-    </script>
 </body>
