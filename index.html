@@ -4,25 +4,14 @@
             background-image: url('otterImg.jpg');
             background-size: cover;
             background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
         }
-    </style>
-<head>
-    <style>
-        body {
+        .container {
             position: relative;
             width: 100%;
             height: 100vh;
-            margin: 0;
-            padding: 0;
             overflow: hidden; /* Prevents scrolling */
-            background-color: #f0f0f0; /* Background color for the body */
-        }
-        .container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
         }
         .moving-image {
             position: absolute;
@@ -36,11 +25,11 @@
 </head>
 <body>
     <div class="container">
-        <img src="oshawott.jpg" alt="Image 1">
-        <img src="otters_fighting.jpg" alt="Image 2">
-        <img src="otter_phone.jpg" alt="Image 3">
-        <img src="otterai.png" alt="Image 4">
-        <img src="cuteOtter.jpg" alt="Image 5">
+        <img src="oshawott.jpg" alt="Image 1" class="moving-image">
+        <img src="otters_fighting.jpg" alt="Image 2" class="moving-image">
+        <img src="otter_phone.jpg" alt="Image 3" class="moving-image">
+        <img src="otterai.png" alt="Image 4" class="moving-image">
+        <img src="cuteOtter.jpg" alt="Image 5" class="moving-image">
         <!-- Add more img tags for additional images -->
     </div>
 </body>
