@@ -6,20 +6,25 @@
             background-repeat: no-repeat;
             margin: 0;
             padding: 0;
+            overflow: hidden; /* Prevents scrolling */
+            height: 100vh; /* Added height to ensure full viewport height */
         }
         .container {
             position: relative;
             width: 100%;
-            height: 100vh;
-            overflow: hidden; /* Prevents scrolling */
+            height: 100%; /* Set container height to match viewport */
+            display: flex; /* Use flexbox to position images */
+            align-items: center; /* Center images vertically */
+            animation: moveImages linear infinite; /* Apply animation to the container */
         }
         .moving-image {
-            position: absolute;
-            animation: moveImage linear infinite; /* Adjust animation duration and timing */
+            width: 200px; /* Adjust image width as needed */
+            height: auto; /* Maintain aspect ratio */
+            margin: 0 20px; /* Add space between images */
         }
-        @keyframes moveImage {
+        @keyframes moveImages {
             0% { transform: translateX(0); }
-            100% { transform: translateX(100%); }
+            100% { transform: translateX(100vw); } /* Use viewport width for animation */
         }
     </style>
 </head>
